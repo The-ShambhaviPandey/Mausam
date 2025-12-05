@@ -1,0 +1,119 @@
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* WRAPPER */
+.overlay-wrapper {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  min-height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  gap: 30px;
+  padding-top: 40px;
+  pointer-events: none;
+}
+
+/* CARD */
+.overlay-card {
+  width: 95%;
+  max-width: 1500px;
+  min-height: 650px;
+  background: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(5px);
+  border-radius: 24px;
+  border: 1px solid rgba(255,255,255,0.12);
+  padding: 35px 30px;
+  margin-bottom: 70px;
+  
+  pointer-events: auto;
+  display: flex;
+  gap: 40px;
+}
+
+/* FORCE LEFT + RIGHT PANELS */
+.left-section,
+.right-panel-container {
+  flex: 1;
+}
+
+/* RESPONSIVE STACK */
+@media (max-width: 900px) {
+  .overlay-card {
+    flex-direction: column;
+    min-height: auto;
+    padding: 25px 20px;
+  }
+}
+
+/* TITLE */
+.app-title {
+  text-align: center;
+  font-size: 3rem;
+  font-family: 'Playfair Display','Georgia',serif;
+  font-weight: 700;
+  margin-top: 40px;
+  margin-bottom: 10px;
+  letter-spacing: 8px;
+  text-transform: uppercase;
+
+  background: linear-gradient(
+    135deg,
+    #b2faee 0%,
+    #cfe5e1 25%,
+    #e6eeed 50%,
+    #daf9f5 75%,
+    #20bfa5 100%
+  );
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+
+  filter: drop-shadow(0 0 20px #20bfa559)
+          drop-shadow(0 0 40px #20bfa5)
+          drop-shadow(0 4px 8px #20bfa54d);
+
+  animation: gradientShift 8s ease infinite, floatTitle 6s ease-in-out infinite;
+  position: relative;
+  padding: 10px 0;
+}
+
+@keyframes gradientShift {
+  0%,100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+@keyframes floatTitle {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.app-title::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 200px;
+  height: 2px;
+
+  background: linear-gradient(90deg,
+    transparent 0%,
+    #20bfa5 50%,
+    transparent 100%
+  );
+
+  animation: underlineGlow 3s ease-in-out infinite;
+}
+
+@keyframes underlineGlow {
+  0%,100% { opacity: 0.5; width: 200px; }
+  50% { opacity: 1; width: 260px; }
+}

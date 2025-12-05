@@ -1,0 +1,149 @@
+.left-panel-container {
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  color: #ffffff;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  padding: 20px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.left-panel-top {
+  text-align: center; /* keep everything centered */
+  margin-bottom: 32px;
+  display: flex;
+  flex-direction: column; /* stack elements vertically */
+  align-items: center;    /* center horizontally */
+}
+
+.location {
+  font-size: 14px;
+  opacity: 0.75;
+  margin-bottom: 8px; /* space between location and temperature */
+  display: flex;
+  align-items: center;
+  gap: 6px; /* space between icon and text */
+  margin-left: 0; /* remove the old left margin */
+  justify-content: center; /* center icon + text horizontally */
+}
+
+.location-icon {
+  color: #ffffff; /* keep icon white */
+}
+
+.temperature {
+  font-size: 96px;
+  font-weight: 300;
+  letter-spacing: -2px;
+  margin-bottom: 8px;
+  text-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.weather-title {
+  font-size: 28px;
+  font-weight: 400;
+  margin-bottom: 20px;
+  opacity: 1;
+}
+
+.weather-description {
+  font-size: 14px;
+  line-height: 1.6;
+  opacity: 0.8;
+  max-width: 360px;
+  margin: 0 auto;
+}
+
+.left-panel-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  margin-top: 70px;
+}
+
+/* Weather Card */
+.weather-card {
+  background: rgba(255, 255, 255, 0.036);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  padding: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+
+  min-width: 180px;   /* prevents shrinking */
+  flex: 1;            /* optional if you wrap in flex container */
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 16px;
+  opacity: 0.7;
+}
+
+.card-icon {
+  opacity: 0.8;
+}
+
+.card-title {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.card-value {
+  font-size: 40px;
+  font-weight: 300;
+  margin-bottom: 8px;
+  letter-spacing: -1px;
+}
+
+.card-subtext {
+  font-size: 13px;
+  opacity: 0.75;
+  line-height: 1.4;
+  margin-top: 8px;
+}
+
+.card-footer {
+  font-size: 13px;
+  opacity: 0.75;
+  line-height: 1.4;
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+
+
+/* Mobile: stack cards vertically */
+@media (max-width: 600px) {
+  .left-panel-grid {
+    grid-template-columns: 1fr; /* one card per row */
+    gap: 12px;
+    margin-top: 30px;
+  }
+
+  .weather-card {
+    min-width: auto; /* let them shrink naturally */
+    width: 100%;
+  }
+
+  .temperature {
+    font-size: 64px; /* slightly smaller so it doesn't punch the screen */
+  }
+
+  .weather-title {
+    font-size: 22px;
+  }
+
+  .weather-description {
+    font-size: 13px;
+    max-width: 260px;
+  }
+}

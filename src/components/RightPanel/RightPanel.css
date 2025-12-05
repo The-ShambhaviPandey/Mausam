@@ -1,0 +1,582 @@
+.right-panel-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  color: #ffffff;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+/* Forecast Section */
+.forecast-section {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.036);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  padding: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  
+}
+
+.section-title {
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: 16px;
+  opacity: 0.9;
+  letter-spacing: 0.3px;
+  display: flex;
+  align-items: center;
+}
+
+.title-icon {
+  font-size: 32px;
+  margin-right: 15px;
+}
+
+/* Hourly Forecast */
+.hourly-scroll {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 12px;
+}
+
+.hourly-item {
+  background: rgba(255, 255, 255, 0.036);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  padding: 16px 12px;
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.hourly-time {
+  font-size: 12px;
+  opacity: 0.7;
+  font-weight: 500;
+}
+
+.hourly-icon {
+  font-size: 28px;
+}
+
+.hourly-temp {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+/* Weekly Forecast */
+.weekly-scroll {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+  gap: 12px;
+}
+
+.weekly-item {
+  background: rgba(255, 255, 255, 0.036);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  padding: 16px 12px;
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.weekly-day {
+  font-size: 13px;
+  font-weight: 600;
+  opacity: 0.85;
+}
+
+.weekly-icon {
+  font-size: 32px;
+  margin: 4px 0;
+}
+
+.weekly-temps {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  font-size: 14px;
+}
+
+.temp-high {
+  font-weight: 600;
+}
+
+.temp-low {
+  opacity: 0.6;
+}
+
+
+/* Detail Cards Grid */
+.detail-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  margin-top: 10px;
+}
+
+.detail-card {
+  background: rgba(255, 255, 255, 0.036);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  padding: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.detail-header {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 16px;
+  opacity: 0.7;
+}
+
+.detail-icon {
+  opacity: 0.8;
+}
+
+.detail-title {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.detail-value {
+  font-size: 36px;
+  font-weight: 300;
+  margin-bottom: 6px;
+  letter-spacing: -1px;
+}
+
+.detail-subtext {
+  font-size: 14px;
+  opacity: 0.85;
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+
+.detail-footer {
+  font-size: 12px;
+  opacity: 0.7;
+  line-height: 1.4;
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.highlight {
+  background: rgba(255, 255, 255, 0.18) !important;
+  border: 1px solid rgba(255, 255, 255, 0.35) !important;
+  transform: scale(1.03);
+  transition: 0.25s ease;
+}
+
+.highlight .hourly-time,
+.highlight .weekly-day {
+  opacity: 1;
+  font-weight: 700;
+}
+
+.highlight .hourly-temp,
+.highlight .temp-high {
+  font-weight: 700;
+}
+
+.highlight .hourly-icon,
+.highlight .weekly-icon {
+  transform: scale(1.1);
+}
+
+/* UV row: arc + info aligned horizontally */
+.uv-row {
+  display: flex;
+  align-items: center;   /* vertical center alignment */
+  gap: 16px;
+  justify-content: flex-start;
+  margin: 8px 0 6px 0;
+}
+
+/* Arc container keeps fixed size so layout doesn't jump */
+.uv-arc-container {
+  width: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* semicircular arc */
+.uv-arc {
+  width: 100px;
+  height: 50px;
+  border-radius: 100px 100px 0 0;
+  background: conic-gradient(
+    violet 0%,
+    indigo 16%,
+    blue 33%,
+    green 50%,
+    yellow 67%,
+    orange 83%,
+    red 100%
+  );
+  position: relative;
+  overflow: hidden;
+  /* soften edges so arc sits cleanly */
+  mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
+  transform: translateY(2px); /* visually centers the arc relative to number */
+}
+
+/* needle placed at center bottom of arc, rotates around bottom center */
+.uv-indicator {
+  width: 3px;
+  height: 46px;
+  background: #ffffff;
+  position: absolute;
+  left: 50%;
+  bottom: -6px; /* slight extension so it visually sits on arc edge */
+  transform-origin: bottom center;
+  border-radius: 2px;
+  box-shadow: 0 0 8px rgba(255,255,255,0.9);
+  transition: transform 450ms cubic-bezier(.2,.9,.2,1);
+  pointer-events: none;
+}
+
+/* number & text aligned nicely to the right of arc */
+.uv-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.uv-value-number {
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.uv-text {
+  font-size: 13px;
+  color: rgba(255,255,255,0.85);
+}
+
+/* vertical layout now */
+.uv-column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+/* center the text under the arc */
+.uv-info-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 4px;
+}
+
+.uv-value-number {
+  font-size: 32px;
+  font-weight: 700;
+}
+
+.uv-text {
+  font-size: 13px;
+  opacity: 0.85;
+}
+
+
+/* AIR QUALITY REFINEMENT */
+.air-card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* AQI number + text */
+.aqi-value-row {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.aqi-number {
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.aqi-status {
+  font-size: 14px;
+  opacity: 0.85;
+  font-weight: 500;
+}
+
+/* AQI bar container */
+.aqi-bar-wrapper {
+  width: 100%;
+  margin-top: 6px;
+}
+
+/* Bar with VIBGYOR color */
+.aqi-bar {
+  position: relative;
+  height: 10px;
+  width: 100%;
+  border-radius: 10px;
+  overflow: hidden;
+  background: linear-gradient(
+    to right,
+    #6aff6a 0%,
+    #c8ff3f 20%,
+    #ffee33 40%,
+    #ffbb33 60%,
+    #ff6b3d 80%,
+    #ff4258 100%
+  );
+}
+
+/* scale labels 0 ------- 500 */
+.aqi-scale-labels {
+  margin-top: 4px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  opacity: 0.7;
+}
+
+/* Indicator dot */
+.aqi-bar-indicator {
+  position: absolute;
+  top: -4px;
+  width: 12px;
+  height: 18px;
+  border-radius: 6px;
+  background: white; /* keep it white */
+  box-shadow: 0 0 6px rgba(255,255,255,0.9); /* default glow */
+  transform: translateX(-50%);
+}
+
+/* Good AQI: green glow */
+.aqi-bar-indicator.good {
+  box-shadow: 0 0 8px rgba(0,255,128,0.8);
+}
+
+/* Wind Card */
+.wind-compass-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.wind-compass {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.3);
+  position: relative;
+  background: rgba(255,255,255,0.05);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Needle */
+.wind-needle {
+  width: 2px;
+  height: 45%;
+  background: white;
+  position: absolute;
+  bottom: 50%;
+  left: 50%;
+  transform-origin: bottom center;
+  border-radius: 1px;
+  transition: transform 0.4s ease;
+}
+
+/* Direction Labels inside compass */
+.wind-compass span {
+  position: absolute;
+  font-size: 10px;
+  color: rgba(255,255,255,0.8);
+  font-weight: 500;
+}
+
+.dir-n { top: 5%; left: 50%; transform: translateX(-50%); }
+.dir-ne { top: 20%; right: 10%; }
+.dir-e { top: 50%; right: 5%; transform: translateY(-50%); }
+.dir-se { bottom: 20%; right: 10%; }
+.dir-s { bottom: 5%; left: 50%; transform: translateX(-50%); }
+.dir-sw { bottom: 20%; left: 10%; }
+.dir-w { top: 50%; left: 5%; transform: translateY(-50%); }
+.dir-nw { top: 20%; left: 10%; }
+
+/* Speed below */
+.wind-speed {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+
+/* Cloud Cover */
+.cloud-meter-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.cloud-meter {
+  width: 100px;
+  height: 50px;
+  border-radius: 100px 100px 0 0;
+  background: conic-gradient(
+    #cce6ff 0%,  /* clear */
+    #99ccff 50%, /* partly cloudy */
+    #666666 100% /* full cloud */
+  );
+  position: relative;
+  mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
+}
+
+.cloud-arc-indicator {
+  width: 3px;
+  height: 46px;
+  background: white;
+  position: absolute;
+  left: 50%;
+  bottom: -6px;
+  transform-origin: bottom center;
+  border-radius: 2px;
+  box-shadow: 0 0 8px rgba(255,255,255,0.9);
+  transition: transform 450ms cubic-bezier(.2,.9,.2,1);
+}
+
+.cloud-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.cloud-value {
+  font-size: 28px;
+  font-weight: 700;
+}
+
+.cloud-text {
+  font-size: 13px;
+  color: rgba(255,255,255,0.85);
+}
+
+/* ========================================
+   RESPONSIVE STYLES FOR MOBILE
+   ======================================== */
+
+@media (max-width: 768px) {
+  /* Hourly Forecast - Horizontal Scroll */
+  .hourly-scroll {
+    display: flex;
+    overflow-x: auto;
+    gap: 12px;
+    padding-bottom: 8px;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  .hourly-scroll::-webkit-scrollbar {
+    height: 6px;
+  }
+  
+  .hourly-scroll::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 3px;
+  }
+  
+  .hourly-scroll::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 3px;
+  }
+  
+  .hourly-item {
+    min-width: 80px;
+    flex-shrink: 0;
+    scroll-snap-align: start;
+  }
+  
+  /* Weekly Forecast - Horizontal Scroll */
+  .weekly-scroll {
+    display: flex;
+    overflow-x: auto;
+    gap: 12px;
+    padding-bottom: 8px;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  .weekly-scroll::-webkit-scrollbar {
+    height: 6px;
+  }
+  
+  .weekly-scroll::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 3px;
+  }
+  
+  .weekly-scroll::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 3px;
+  }
+  
+  .weekly-item {
+    min-width: 90px;
+    flex-shrink: 0;
+    scroll-snap-align: start;
+  }
+  
+  /* Detail Cards - Single Column */
+  .detail-cards-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  /* Adjust padding for smaller screens */
+  .right-panel-container {
+    padding: 16px;
+    gap: 20px;
+  }
+  
+  .forecast-section {
+    padding: 16px;
+  }
+  
+  .detail-card {
+    padding: 16px;
+  }
+}
+
+/* Extra small screens */
+@media (max-width: 480px) {
+  .right-panel-container {
+    padding: 12px;
+    gap: 16px;
+  }
+  
+  .section-title {
+    font-size: 14px;
+  }
+  
+  .title-icon {
+    font-size: 24px;
+    margin-right: 10px;
+  }
+}

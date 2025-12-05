@@ -1,0 +1,15 @@
+.footer {
+  width: 100%;
+  padding: 20px 0;
+  text-align: center;
+  font-size: 1rem;
+  color: #000;
+  background:#fff;
+  backdrop-filter: blur(6px);
+  border-top: 1px solid rgba(255,255,255,0.15);
+  margin-top: -45px;
+}
+
+.footer p {
+  letter-spacing: 0.5px;
+}
