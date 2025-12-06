@@ -1,5 +1,7 @@
 # 🌤️ **Mausam — Weather Forecasting App**
 
+Live Demo: https://mausam-4b8j.onrender.com
+
 **Mausam** is a beautifully designed, responsive weather forecasting web application that brings meteorology and ambience together.
 It fetches real-time weather data using the **OpenWeather API** and transforms the entire screen into an immersive, cinematic backdrop that changes dynamically based on **weather**, **time of day**, and **user location**.
 
